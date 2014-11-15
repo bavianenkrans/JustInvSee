@@ -1,0 +1,31 @@
+language: EN
+ 
+lang:
+  EN:
+    needop: §cYou have to be OP to use this command!
+    onlyingame: §cThat command is only for in-game players!
+    usage: '§cUsage: /inv <player>'
+    enderusage: '§cUsage: /enderinv <player>'
+    playernotonline: §cThat player is not online!
+    lookedinyourinv: §f is looking in your inventory!
+  NL:
+    needop: §cJe moet OP zijn voor dit commando!
+    onlyingame: §cDat commando is alleen voor in-game spelers!
+    usage: '§cDoe: /inv <player>'
+    enderusage: '§cDoe: /enderinv <player>'
+    playernotonline: §cDie speler is niet online!
+    lookedinyourinv: §f kijkt in je inventaris!
+  FR:
+    needop: §cVous devez être OP pour cette commande!
+    onlyingame: §cCette commande est seulement pour les joueurs!
+    usage: '§cFaire: /inv <player>'
+    enderusage: '§cFaire: /enderinv <player>'
+    playernotonline: §cCe joueurs n'est pas en ligne!
+    lookedinyourinv: §f regarde dans votre inventaire!
+  DE:
+    needop: §cDu musst OP sein um diesen Befehl benutzen zu können!
+    onlyingame: §cDieser Befehl ist nur für InGame Spieler!
+    usage: '§cBenutzung: /inv <Spieler>'
+    enderusage: '§cBenutzung: /enderinv <player>'
+    playernotonline: §cDer Spieler ist nicht online!
+    lookedinyourinv: §f schaut sich dein Inventar an!
