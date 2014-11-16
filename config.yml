@@ -29,3 +29,10 @@ lang:
     enderusage: '§cBenutzung: /enderinv <player>'
     playernotonline: §cDer Spieler ist nicht online!
     lookedinyourinv: §f schaut sich dein Inventar an!
+  DK:
+    needop: §cDu skal være OP for at bruge denne komando!
+    onlyingame: §cDenne komando er kun for in-game spillere!
+    usage: '§cUsage: /inv <spiller>'
+    enderusage: '§cUsage: /enderinv <spiller>'
+    playernotonline: §cDenne spiller er ikke online!
+    lookedinyourinv: §f kigger i din inventory!
