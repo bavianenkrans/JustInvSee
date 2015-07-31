@@ -15,16 +15,16 @@ public class Message {
 		case needop:
 			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "needop");
 		case onlyingame:
-			msg = main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "onlyingame");
+			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "onlyingame");
 		case lookedinyourinv:
 			msg = ChatColor.GOLD + player.getName()
 					+ main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "lookedinyourinv");
 		case playernotonline:
 			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "playernotonline");
 		case usage:
-			msg = ChatColor.GREEN + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "usage");
+			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "usage");
 		case enderusage:
-			msg = ChatColor.GREEN + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "enderusage");
+			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "enderusage");
 		}
 
 		return msg;
