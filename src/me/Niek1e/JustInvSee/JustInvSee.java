@@ -3,6 +3,8 @@ package me.Niek1e.JustInvSee;
 import java.io.IOException;
 
 import me.Niek1e.JustInvSee.Message.Messages;
+import net.gravitydevelopment.updater.Updater;
+import net.gravitydevelopment.updater.Updater.UpdateType;
 
 import org.bukkit.Effect;
 import org.bukkit.command.Command;
@@ -27,6 +29,8 @@ public class JustInvSee extends JavaPlugin {
 			this.getLogger().warning("Couldn't submit stats to Metrics!");
 		}
 
+		@SuppressWarnings("unused")
+		Updater updater = new Updater(this, 66804, getFile(), UpdateType.DEFAULT, true);
 	}
 
 	@Override
