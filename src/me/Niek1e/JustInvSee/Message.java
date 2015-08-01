@@ -5,28 +5,12 @@ import org.bukkit.entity.Player;
 
 public class Message {
 
-	public static enum Messages {
-		needop, onlyingame, usage, enderusage, playernotonline, lookedinyourinv;
-	}
-
-	public static String get(Messages message, JustInvSee main, Player player) {
+	public static String get(String message, JustInvSee main, Player player) {
 		String msg = "";
-		switch (message) {
-		case needop:
-			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "needop");
-		case onlyingame:
-			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "onlyingame");
-		case lookedinyourinv:
-			msg = ChatColor.GOLD + player.getName()
-					+ main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "lookedinyourinv");
-		case playernotonline:
-			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "playernotonline");
-		case usage:
-			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "usage");
-		case enderusage:
-			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "enderusage");
-		}
-
+		if(message == "lookedinyourinv")
+			msg = ChatColor.GOLD + player.getName() + ChatColor.WHITE + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + "lookedinyourinv");
+		else
+			msg = ChatColor.RED + main.getConfig().getString("lang." + main.getConfig().getString("language") + "." + message);
 		return msg;
 	}
 }
