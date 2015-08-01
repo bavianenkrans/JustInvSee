@@ -9,7 +9,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.gravitydevelopment.updater.Updater;
+import net.gravitydevelopment.updater.Updater.UpdateType;
+
 public class JustInvSee extends JavaPlugin {
+	
+	/**
+	 * @author Niek1e
+	 * @version 3.0
+	 */
 
 	public String prefix = "§f[§bJustInvSee§f] ";
 	
