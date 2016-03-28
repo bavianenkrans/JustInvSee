@@ -2,11 +2,16 @@ package me.Niek1e.JustInvSee;
 
 import java.io.IOException;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Effect;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.gravitydevelopment.updater.Updater;
@@ -102,8 +107,51 @@ public class JustInvSee extends JavaPlugin {
 				} else {
 					player.sendMessage(prefix + Message.get("enderusage", this, player));
 				}
+			} else if (label.equalsIgnoreCase("armorinv")){
+				if (args.length == 1) {
+					if (player.hasPermission("justinvsee.armorinv")) {
+						if (player.getServer().getPlayer(args[0]) != null) {
+							Player tplayer = player.getServer().getPlayer(args[0]);
+							Inventory inv = Bukkit.getServer().createInventory(null, 9, "" + tplayer.getName() + "'s Armor");
+							ItemStack overig = createGlass(ChatColor.RED + "[]");
+							ItemStack helmet = tplayer.getEquipment().getHelmet();
+							ItemStack chestplate = tplayer.getEquipment().getChestplate();
+							ItemStack leggings = tplayer.getEquipment().getLeggings();
+							ItemStack boots = tplayer.getEquipment().getBoots();
+							ItemStack shield = tplayer.getEquipment().getItemInOffHand();
+							inv.setItem(0, overig);
+							inv.setItem(1, helmet);
+							inv.setItem(2, chestplate);
+							inv.setItem(3, leggings);
+							inv.setItem(4, boots);
+							inv.setItem(5, overig);
+							inv.setItem(6, overig);
+							inv.setItem(7, shield);
+							inv.setItem(8, overig);
+							player.openInventory(inv);
+							if (tplayer.isOp()) {
+								tplayer.sendMessage(prefix + Message.get("lookedinyourinv", this, player));
+							} else {
+							}
+						} else {
+							player.sendMessage(prefix + Message.get("playernotonline", this, player));
+						}
+					} else {
+						player.sendMessage(prefix + Message.get("needop", this, player));
+					}
+				} else {
+					player.sendMessage(prefix + Message.get("armorusage", this, player));
+				}
 			}
 		}
 		return false;
 	}
+	
+	private ItemStack createGlass(String name) {
+        ItemStack i = new ItemStack(Material.STAINED_GLASS_PANE, 1);
+        ItemMeta im = i.getItemMeta();
+        im.setDisplayName(name);
+        i.setItemMeta(im);
+        return i;
+    }
 }
