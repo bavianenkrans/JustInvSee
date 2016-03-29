@@ -2,7 +2,7 @@ author: Niek1e and Viktorstrate
 description: A simple plugin to see someone's inventory!
 main: me.Niek1e.JustInvSee.JustInvSee
 name: JustInvSee
-version: 4.0
+version: 4.1
 commands:
     inv:
       description: Look in someone's inventory!

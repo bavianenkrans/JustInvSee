@@ -9,23 +9,29 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.mcstats.Metrics;
+import org.mcstats.Metrics.Graph;
 
 import net.gravitydevelopment.updater.Updater;
 import net.gravitydevelopment.updater.Updater.UpdateType;
 
-public class JustInvSee extends JavaPlugin {
+public class JustInvSee extends JavaPlugin implements Listener {
 	
 	/**
 	 * @author Niek1e
-	 * @version 3.0
+	 * @version 4.1
 	 */
 
 	public String prefix = "§f[§bJustInvSee§f] ";
 	
+	Inventory inv;
 	
 //	JustInvSee, a plugin to enhance your server.
 //	Copyright (C) 2016 Niek1e
@@ -41,13 +47,43 @@ public class JustInvSee extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		saveDefaultConfig();
+		
+		Bukkit.getServer().getPluginManager().registerEvents(this, this);
 
 		try {
-			MetricsLite metrics = new MetricsLite(this);
+			Metrics metrics = new Metrics(this);
 			metrics.start();
 		} catch (IOException e) {
 			// Failed to submit the stats :-(
 			this.getLogger().warning("Couldn't submit stats to Metrics!");
+		}
+		
+		try {
+		    Metrics metrics = new Metrics(this);
+
+		    Graph weaponsUsedGraph = metrics.createGraph("TEST");
+
+		    weaponsUsedGraph.addPlotter(new Metrics.Plotter("1") {
+
+		            @Override
+		            public int getValue() {
+		                    return 4; // Number of players who used a diamond sword
+		            }
+
+		    });
+
+		    weaponsUsedGraph.addPlotter(new Metrics.Plotter("2") {
+
+		            @Override
+		            public int getValue() {
+		                    return 17;
+		            }
+
+		    });
+
+		    metrics.start();
+		} catch (IOException e) {
+		    //FAILED
 		}
 
 		@SuppressWarnings("unused")
@@ -57,6 +93,16 @@ public class JustInvSee extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		saveDefaultConfig();
+	}
+	
+	@EventHandler
+	public void onInventoryClick(InventoryClickEvent e){
+		if(e.getInventory().getTitle() != "Armor - JustInvSee (C)"){
+			return;
+		}
+		
+		e.setCancelled(true);
+		e.getWhoClicked().closeInventory();
 	}
 
 
@@ -112,7 +158,7 @@ public class JustInvSee extends JavaPlugin {
 					if (player.hasPermission("justinvsee.armorinv")) {
 						if (player.getServer().getPlayer(args[0]) != null) {
 							Player tplayer = player.getServer().getPlayer(args[0]);
-							Inventory inv = Bukkit.getServer().createInventory(null, 9, "" + tplayer.getName() + "'s Armor");
+							inv = Bukkit.getServer().createInventory(null, 9, "Armor - JustInvSee (C)");
 							ItemStack overig = createGlass(ChatColor.RED + "[]");
 							ItemStack helmet = tplayer.getEquipment().getHelmet();
 							ItemStack chestplate = tplayer.getEquipment().getChestplate();
@@ -154,4 +200,6 @@ public class JustInvSee extends JavaPlugin {
         i.setItemMeta(im);
         return i;
     }
+	
+	
 }

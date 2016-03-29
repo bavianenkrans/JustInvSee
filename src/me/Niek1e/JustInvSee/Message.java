@@ -18,7 +18,7 @@ public class Message {
 	
 	/**
 	 * @author Niek1e
-	 * @version 3.0
+	 * @version 4.1
 	 */
 	
 	
