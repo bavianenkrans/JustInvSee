@@ -50,13 +50,6 @@ public class JustInvSee extends JavaPlugin implements Listener {
 		
 		Bukkit.getServer().getPluginManager().registerEvents(this, this);
 
-		try {
-			Metrics metrics = new Metrics(this);
-			metrics.start();
-		} catch (IOException e) {
-			// Failed to submit the stats :-(
-			this.getLogger().warning("Couldn't submit stats to Metrics!");
-		}
 		
 		try {
 		    Metrics metrics = new Metrics(this);
@@ -80,10 +73,11 @@ public class JustInvSee extends JavaPlugin implements Listener {
 		            }
 
 		    });
+		    
 
 		    metrics.start();
 		} catch (IOException e) {
-		    //FAILED
+			this.getLogger().warning("Couldn't submit stats to Metrics!");
 		}
 
 		@SuppressWarnings("unused")
