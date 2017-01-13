@@ -1,19 +1,85 @@
-author: Niek1e and Viktorstrate
-description: A simple plugin to see someone's inventory!
-main: me.Niek1e.JustInvSee.JustInvSee
-name: JustInvSee
-version: 4.1
-commands:
-    inv:
-      description: Look in someone's inventory!
-    enderinv:
-      description: Look in someone's enderchest!
-    armorinv:
-      description: Look up someone's armor!
-permissions:
-    justinvsee.inv:
-      default: op
-    justinvsee.enderinv:
-      default: op
-    justinvsee.armorinv:
-      default: op
+#run dit in python IDLE
+
+import os
+
+import time
+
+
+WIDTH = 79
+
+#the message we wish to print
+message = "hello!".upper()
+
+printedMessage = [ "","","","","","","" ]
+
+
+characters = { " " : [ " ",
+                       " ",
+                       " ",
+                       " ",
+                       " ",
+                       " ",
+                       " " ],
+
+               "E" : [ "*****",
+                       "*   *",
+                       "*   *",
+                       "*****",
+                       "*   *",
+                       "*   *",
+                       "*   *" ],
+               
+               "H" : [ "*   *",
+                       "*   *",
+                       "*   *",
+                       "*****",
+                       "*   *",
+                       "*   *",
+                       "*   *" ], 
+
+               "O" : [ "*****",
+                       "*   *",
+                       "*   *",
+                       "*   *",
+                       "*   *",
+                       "*   *",
+                       "*****" ],
+
+               "L" : [ "*    ",
+                       "*    ",
+                       "*    ",
+                       "*    ",
+                       "*    ",
+                       "*    ",
+                       "*****" ],
+
+               "!" : [ "  *  ",
+                       "  *  ",
+                       "  *  ",
+                       "  *  ",
+                       "  *  ",
+                       "     ",
+                       "  *  " ]
+               
+               }
+
+for row in range(7):
+    for char in message:
+        printedMessage[row] += (str(characters[char][row]) + "  ")
+
+
+
+offset = WIDTH
+while True:
+    os.system("cls")
+    
+    for row in range(7):
+        print(" " * offset + printedMessage[row][max(0,offset*-1):WIDTH - offset])
+    
+    offset -=1
+   
+   
+    if offset <= ((len(message)+2)*6) * -1:
+        offset = WIDTH
+    
+    time.sleep(0.05)
